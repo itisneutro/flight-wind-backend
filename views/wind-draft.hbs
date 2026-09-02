@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Черновик румба ветра</title>
+  <link rel="stylesheet" href="/css/wind-rhumbs.css">
+</head>
+<body>
+  <main class="wind-screen">
+    <div class="wind-draft-head">
+      <span class="wind-draft-badge">Черновик</span>
+    </div>
+
+    <div class="wind-draft-body">
+      <div class="wind-draft-slot">
+        <span class="wind-draft-slot-title">Обложка румба</span>
+        <span class="wind-draft-slot-key">{{rhumb.imageKey}}</span>
+      </div>
+
+      <div class="wind-draft-slot">
+        <span class="wind-draft-slot-title">Видео румба</span>
+        <span class="wind-draft-slot-key">{{rhumb.videoKey}}</span>
+      </div>
+
+      <label class="wind-draft-field">
+        <span class="wind-draft-label">Название</span>
+        <input class="wind-draft-input" type="text" value="{{rhumb.name}}" readonly>
+      </label>
+
+      <label class="wind-draft-field">
+        <span class="wind-draft-label">Описание</span>
+        <textarea class="wind-draft-area" rows="5" readonly>{{rhumb.description}}</textarea>
+      </label>
+
+      <label class="wind-draft-field">
+        <span class="wind-draft-label">Азимут</span>
+        <input class="wind-draft-input" type="text" value="{{rhumb.rhumbAzimuthDeg}}°" readonly>
+      </label>
+
+      <label class="wind-draft-field">
+        <span class="wind-draft-label">Скорость</span>
+        <input class="wind-draft-input" type="text" value="{{rhumb.avgWindSpeedKmh}} км/ч" readonly>
+      </label>
+
+      <button class="wind-draft-save" type="button" disabled>Сохранить</button>
+    </div>
+
+    {{> wind_tab_bar draftActive=true}}
+  </main>
+</body>
+</html>

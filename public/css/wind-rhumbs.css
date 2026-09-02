@@ -1,0 +1,480 @@
+/* Стилистика скопирована с flightradar24.com
+   #F8C023 — scrollbar-color в body и ::-webkit-scrollbar-thumb
+   #222121 — класс .bg-gray-1500, фон боковых панелей
+   #FFFFFF — класс .text-white
+   #D1D0D0 — класс .text-gray-700
+   Шрифт-ориентир — Open Sans
+   Форма карточек и hover — с панели рейсов */
+
+:root {
+  --flight-accent: #F8C023;
+  --flight-bg: #222121;
+  --flight-surface: #2C2B2B;
+  --flight-text: #FFFFFF;
+  --flight-muted: #D1D0D0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input[type="number"],
+button {
+  outline: none;
+}
+
+input[type="number"]:focus,
+button:focus {
+  border-color: var(--flight-accent);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+html {
+  background: var(--flight-bg);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 844px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: var(--flight-bg);
+  color: var(--flight-text);
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.wind-screen {
+  position: relative;
+  flex-shrink: 0;
+  width: 390px;
+  height: 844px;
+  overflow: hidden;
+  background: var(--flight-bg);
+}
+
+/* ---------- Лента ---------- */
+
+.wind-feed-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 390px;
+  height: 844px;
+  object-fit: cover;
+  background: var(--flight-bg);
+}
+
+.wind-feed-shade {
+  position: absolute;
+  left: 0;
+  top: 470px;
+  width: 390px;
+  height: 374px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.72));
+}
+
+.wind-feed-rail {
+  position: absolute;
+  left: 349px;
+  top: 498px;
+  width: 32px;
+}
+
+.wind-feed-likes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--flight-text);
+  transition: color 0.15s linear;
+}
+
+.wind-feed-likes:hover {
+  color: var(--flight-accent);
+}
+
+.wind-feed-likes-count {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.wind-feed-next {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 22px;
+  text-decoration: none;
+  color: var(--flight-accent);
+  transition: color 0.15s linear;
+}
+
+.wind-feed-next:hover {
+  color: var(--flight-text);
+}
+
+.wind-feed-next-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: currentColor;
+}
+
+.wind-icon-arrow {
+  color: var(--flight-bg);
+}
+
+.wind-feed-next-label {
+  margin-top: 4px;
+  font-size: 11px;
+}
+
+.wind-feed-info {
+  position: absolute;
+  left: 16px;
+  bottom: 84px;
+  width: 316px;
+  color: var(--flight-text);
+}
+
+.wind-feed-name {
+  margin: 0;
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.wind-feed-short {
+  margin-left: 6px;
+  font-size: 14px;
+  color: var(--flight-accent);
+}
+
+.wind-feed-details {
+  margin-top: 8px;
+}
+
+.wind-feed-summary {
+  display: inline-block;
+  list-style: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--flight-accent);
+}
+
+.wind-feed-summary::-webkit-details-marker {
+  display: none;
+}
+
+.wind-feed-summary::after {
+  content: "ещё";
+}
+
+.wind-feed-details[open] .wind-feed-summary::after {
+  content: "свернуть";
+}
+
+.wind-feed-summary:hover {
+  color: var(--flight-text);
+}
+
+.wind-feed-description {
+  margin: 6px 0 0 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--flight-muted);
+}
+
+.wind-feed-chips {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.wind-chip {
+  padding: 5px 10px;
+  border: 1px solid rgba(209, 208, 208, 0.18); /* прозрачность от снятого с сайта #D1D0D0 */
+  border-radius: 999px;
+  background: var(--flight-surface);
+  font-size: 12px;
+  color: var(--flight-text);
+}
+
+/* ---------- Плитка ---------- */
+
+.wind-tiles-title {
+  margin: 0;
+  padding: 28px 16px 12px 16px;
+  font-size: 22px;
+  line-height: 28px;
+  color: var(--flight-text);
+}
+
+.wind-filter {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 12px 16px;
+}
+
+.wind-filter-field {
+  width: 246px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid rgba(209, 208, 208, 0.18); /* прозрачность от снятого с сайта #D1D0D0 */
+  border-radius: 10px;
+  background: var(--flight-surface);
+  color: var(--flight-text);
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.wind-filter-field:hover,
+.wind-filter-field:focus {
+  border-color: var(--flight-accent);
+}
+
+.wind-filter-button {
+  width: 104px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: var(--flight-accent);
+  color: var(--flight-bg);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s linear;
+}
+
+.wind-filter-button:hover {
+  background: var(--flight-text);
+}
+
+.wind-tiles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 175px;
+  align-items: start;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 0 16px 16px 16px;
+  max-height: 612px;
+  overflow-y: auto;
+}
+
+.wind-tiles-empty {
+  grid-column: 1 / -1;
+  margin: 40px 0 0 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--flight-muted);
+}
+
+.wind-tile {
+  display: block;
+  width: 171px;
+  height: 175px;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--flight-surface);
+  color: var(--flight-text);
+  text-decoration: none;
+  transition: transform 0.15s linear, box-shadow 0.15s linear;
+}
+
+.wind-tile-image {
+  display: block;
+  width: 171px;
+  height: 118px;
+  margin: 0;
+  border: none;
+  border-radius: 12px 12px 0 0;
+  object-fit: cover;
+  background: var(--flight-bg);
+}
+
+.wind-tile-name {
+  display: block;
+  padding: 8px 10px 0 10px;
+  font-size: 13px;
+  line-height: 17px;
+  color: var(--flight-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wind-tile-likes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px 10px 10px;
+  font-size: 12px;
+  color: var(--flight-muted);
+}
+
+.wind-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- Добавление ---------- */
+
+.wind-draft-head {
+  padding: 28px 16px 8px 16px;
+}
+
+.wind-draft-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--flight-accent);
+  color: var(--flight-bg);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wind-draft-body {
+  height: 690px;
+  padding: 8px 16px 16px 16px;
+  overflow-y: auto;
+}
+
+.wind-draft-slot {
+  width: 358px;
+  height: 84px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 2px dashed rgba(209, 208, 208, 0.3); /* прозрачность от снятого с сайта #D1D0D0 */
+  border-radius: 12px;
+  color: var(--flight-muted);
+  transition: border-color 0.15s linear;
+}
+
+.wind-draft-slot:hover {
+  border-color: var(--flight-accent);
+}
+
+.wind-draft-slot-title {
+  font-size: 13px;
+  color: var(--flight-text);
+}
+
+.wind-draft-slot-key {
+  font-size: 12px;
+}
+
+.wind-draft-field {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.wind-draft-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: var(--flight-muted);
+}
+
+.wind-draft-input {
+  width: 358px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid rgba(209, 208, 208, 0.18); /* прозрачность от снятого с сайта #D1D0D0 */
+  border-radius: 10px;
+  background: var(--flight-surface);
+  color: var(--flight-text);
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.wind-draft-area {
+  width: 358px;
+  padding: 10px 12px;
+  border: 1px solid rgba(209, 208, 208, 0.18); /* прозрачность от снятого с сайта #D1D0D0 */
+  border-radius: 10px;
+  background: var(--flight-surface);
+  color: var(--flight-text);
+  font-size: 13px;
+  line-height: 18px;
+  font-family: inherit;
+  resize: none;
+}
+
+.wind-draft-input:hover,
+.wind-draft-area:hover {
+  border-color: var(--flight-accent);
+}
+
+.wind-draft-save {
+  width: 358px;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(209, 208, 208, 0.12); /* прозрачность от снятого с сайта #D1D0D0 */
+  color: var(--flight-muted);
+  font-size: 14px;
+  font-family: inherit;
+  cursor: not-allowed;
+}
+
+/* ---------- Панель вкладок ---------- */
+
+.wind-tab-bar {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  width: 358px;
+  height: 64px;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid rgba(209, 208, 208, 0.12); /* прозрачность от снятого с сайта #D1D0D0 */
+  border-radius: 28px;
+  background: rgba(34, 33, 33, 0.82); /* прозрачность от снятого с сайта #222121 — класс .bg-gray-1500 */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.wind-tab {
+  width: 96px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--flight-text);
+  transition: color 0.15s linear;
+}
+
+.wind-tab-icon {
+  display: block;
+}
+
+.wind-tab-label {
+  font-size: 11px;
+}
+
+.wind-tab:hover {
+  color: var(--flight-accent);
+}
+
+.wind-tab--active {
+  color: var(--flight-accent);
+}
