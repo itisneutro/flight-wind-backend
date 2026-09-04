@@ -7,19 +7,13 @@
 </head>
 <body>
   <main class="wind-screen">
-    <div class="wind-draft-head">
-      <span class="wind-draft-badge">Черновик</span>
-    </div>
-
     <div class="wind-draft-body">
       <div class="wind-draft-slot">
-        <span class="wind-draft-slot-title">Обложка румба</span>
-        <span class="wind-draft-slot-key">{{rhumb.imageKey}}</span>
+        <span class="wind-draft-slot-key">{{rhumb.videoKey}}</span>
       </div>
 
       <div class="wind-draft-slot">
-        <span class="wind-draft-slot-title">Видео румба</span>
-        <span class="wind-draft-slot-key">{{rhumb.videoKey}}</span>
+        <span class="wind-draft-slot-key">{{rhumb.imageKey}}</span>
       </div>
 
       <label class="wind-draft-field">
@@ -33,16 +27,14 @@
       </label>
 
       <label class="wind-draft-field">
-        <span class="wind-draft-label">Азимут</span>
-        <input class="wind-draft-input" type="text" value="{{rhumb.rhumbAzimuthDeg}}°" readonly>
+        <span class="wind-draft-label">Географический азимут</span>
+        <input class="wind-draft-input" type="text" value="{{rhumb.rhumbGeographicAzimuthDeg}}°" readonly>
       </label>
 
       <label class="wind-draft-field">
-        <span class="wind-draft-label">Скорость</span>
-        <input class="wind-draft-input" type="text" value="{{rhumb.avgWindSpeedKmh}} км/ч" readonly>
+        <span class="wind-draft-label">Магнитный азимут</span>
+        <input class="wind-draft-input" type="text" value="{{rhumb.rhumbMagneticAzimuthDeg}}°" readonly>
       </label>
-
-      <button class="wind-draft-save" type="button" disabled>Сохранить</button>
     </div>
 
     {{> wind_tab_bar draftActive=true}}

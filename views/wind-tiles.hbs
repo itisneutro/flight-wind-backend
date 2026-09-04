@@ -10,13 +10,16 @@
     <h1 class="wind-tiles-title">Румбы ветра</h1>
 
     <form class="wind-filter" method="GET" action="/rhumbs">
-      <input class="wind-filter-field"
-             type="number"
-             name="minWindSpeed"
+      <label class="wind-filter-label" for="minAzimuth">Азимут от</label>
+      <input class="wind-filter-range"
+             id="minAzimuth"
+             type="range"
+             name="minAzimuth"
              min="0"
-             step="1"
-             placeholder="Скорость от, км/ч"
-             value="{{minWindSpeed}}">
+             max="360"
+             step="45"
+             value="{{minAzimuth}}">
+      <span class="wind-filter-value">{{minAzimuth}}°</span>
       <button class="wind-filter-button" type="submit">Найти</button>
     </form>
 
@@ -33,7 +36,7 @@
         </span>
       </a>
       {{else}}
-      <p class="wind-tiles-empty">Румбы с такой скоростью ветра не найдены</p>
+      <p class="wind-tiles-empty">Румбы с таким азимутом не найдены</p>
       {{/each}}
     </div>
 

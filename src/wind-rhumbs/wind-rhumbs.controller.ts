@@ -17,10 +17,10 @@ export class WindRhumbsController {
 
   @Get()
   @Render('wind-tiles')
-  tiles(@Query('minWindSpeed') minWindSpeed?: string) {
-    const parsed = Number(minWindSpeed);
+  tiles(@Query('minAzimuth') minAzimuth?: string) {
+    const parsed = Number(minAzimuth);
     const threshold =
-      minWindSpeed === undefined || minWindSpeed === '' || Number.isNaN(parsed)
+      minAzimuth === undefined || minAzimuth === '' || Number.isNaN(parsed)
         ? 0
         : parsed;
 
@@ -31,7 +31,7 @@ export class WindRhumbsController {
 
     return {
       rhumbs,
-      minWindSpeed: minWindSpeed ?? '',
+      minAzimuth: threshold,
       minioUrl: MINIO_URL,
     };
   }

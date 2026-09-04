@@ -6,10 +6,11 @@ import { WIND_RHUMBS } from './wind-rhumbs.data';
 export class WindRhumbsService {
   private readonly rhumbs: WindRhumb[] = WIND_RHUMBS;
 
-  findAll(minWindSpeed = 0): WindRhumb[] {
+  findAll(minAzimuth = 0): WindRhumb[] {
     return this.rhumbs.filter(
       (rhumb) =>
-        rhumb.status === 'published' && rhumb.avgWindSpeedKmh >= minWindSpeed,
+        rhumb.status === 'published' &&
+        rhumb.rhumbGeographicAzimuthDeg >= minAzimuth,
     );
   }
 

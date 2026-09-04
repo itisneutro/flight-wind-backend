@@ -8,7 +8,7 @@ export interface WindRhumb {
   imageKey: string;
   videoKey: string;
   status: WindRhumbStatus;
-  rhumbAzimuthDeg: number;
-  avgWindSpeedKmh: number;
+  rhumbGeographicAzimuthDeg: number;
+  rhumbMagneticAzimuthDeg: number;
   likes: number[];
 }
