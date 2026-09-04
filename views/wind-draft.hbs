@@ -7,35 +7,24 @@
 </head>
 <body>
   <main class="wind-screen">
-    <div class="wind-draft-body">
-      <div class="wind-draft-slot">
-        <span class="wind-draft-slot-key">{{rhumb.videoKey}}</span>
-      </div>
+    <div class="wind-draft-slot wind-draft-slot--video">{{rhumb.videoKey}}</div>
+    <div class="wind-draft-slot wind-draft-slot--cover">{{rhumb.imageKey}}</div>
 
-      <div class="wind-draft-slot">
-        <span class="wind-draft-slot-key">{{rhumb.imageKey}}</span>
-      </div>
+    <label class="wind-draft-label wind-draft-label--name" for="rhumb-name">Название</label>
+    <input class="wind-draft-input wind-draft-input--name"
+           id="rhumb-name" type="text" value="{{rhumb.name}}" readonly>
 
-      <label class="wind-draft-field">
-        <span class="wind-draft-label">Название</span>
-        <input class="wind-draft-input" type="text" value="{{rhumb.name}}" readonly>
-      </label>
+    <label class="wind-draft-label wind-draft-label--description" for="rhumb-description">Описание</label>
+    <textarea class="wind-draft-area"
+              id="rhumb-description" readonly>{{rhumb.description}}</textarea>
 
-      <label class="wind-draft-field">
-        <span class="wind-draft-label">Описание</span>
-        <textarea class="wind-draft-area" rows="5" readonly>{{rhumb.description}}</textarea>
-      </label>
+    <label class="wind-draft-label wind-draft-label--geographic" for="rhumb-geographic-azimuth">Географический азимут</label>
+    <input class="wind-draft-input wind-draft-input--geographic"
+           id="rhumb-geographic-azimuth" type="text" value="{{rhumb.rhumbGeographicAzimuthDeg}}°" readonly>
 
-      <label class="wind-draft-field">
-        <span class="wind-draft-label">Географический азимут</span>
-        <input class="wind-draft-input" type="text" value="{{rhumb.rhumbGeographicAzimuthDeg}}°" readonly>
-      </label>
-
-      <label class="wind-draft-field">
-        <span class="wind-draft-label">Магнитный азимут</span>
-        <input class="wind-draft-input" type="text" value="{{rhumb.rhumbMagneticAzimuthDeg}}°" readonly>
-      </label>
-    </div>
+    <label class="wind-draft-label wind-draft-label--magnetic" for="rhumb-magnetic-azimuth">Магнитный азимут</label>
+    <input class="wind-draft-input wind-draft-input--magnetic"
+           id="rhumb-magnetic-azimuth" type="text" value="{{rhumb.rhumbMagneticAzimuthDeg}}°" readonly>
 
     {{> wind_tab_bar draftActive=true}}
   </main>

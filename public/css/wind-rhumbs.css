@@ -393,70 +393,108 @@ body {
 
 /* ---------- Добавление ---------- */
 
-.wind-draft-body {
-  height: 780px;
-  padding: 28px 16px 16px 16px;
-  overflow-y: auto;
-}
+/* Геометрия по макету: экран 390x844, все координаты абсолютные, в пикселях.
+   Координата подписи — базовая линия текста. При кегле 13px и интерлиньяже 16px
+   базовая линия лежит на 13px от верха строки (измерено), поэтому у каждой
+   подписи top = базовая линия минус 13. Выносные уходят на 2,5px ниже базовой
+   линии, до верха поля остаётся 10px. */
 
 .wind-draft-slot {
+  position: absolute;
+  left: 16px;
   width: 358px;
-  height: 84px;
-  margin-bottom: 12px;
+  height: 102px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
   border: 2px dashed rgba(208, 217, 224, 0.3); /* прозрачность от снятого с сайта #D0D9E0 */
   border-radius: 12px;
-  color: var(--wind-muted);
+  font-size: 15px;
+  color: var(--wind-text);
   transition: border-color 0.15s linear;
+}
+
+.wind-draft-slot--video {
+  top: 40px;
+}
+
+.wind-draft-slot--cover {
+  top: 158px;
 }
 
 .wind-draft-slot:hover {
   border-color: var(--wind-accent);
 }
 
-.wind-draft-slot-key {
-  font-size: 12px;
-}
-
-.wind-draft-field {
-  display: block;
-  margin-bottom: 12px;
-}
-
 .wind-draft-label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 12px;
+  position: absolute;
+  left: 16px;
+  line-height: 16px;
+  font-size: 13px;
   color: var(--wind-muted);
 }
 
+.wind-draft-label--name {
+  top: 281px; /* базовая линия 294 */
+}
+
+.wind-draft-label--description {
+  top: 367px; /* базовая линия 380 */
+}
+
+.wind-draft-label--geographic {
+  top: 615px; /* базовая линия 628 */
+}
+
+.wind-draft-label--magnetic {
+  top: 689px; /* базовая линия 702 */
+}
+
 .wind-draft-input {
+  position: absolute;
+  left: 16px;
   width: 358px;
-  height: 40px;
+  height: 48px;
   padding: 0 12px;
   border: 1px solid rgba(208, 217, 224, 0.18); /* прозрачность от снятого с сайта #D0D9E0 */
-  border-radius: 10px;
-  background: var(--wind-control);
+  border-radius: 12px;
+  background: var(--wind-surface);
   color: var(--wind-text);
-  font-size: 13px;
+  font-size: 15px;
   font-family: inherit;
 }
 
+.wind-draft-input--name {
+  top: 304px;
+}
+
+.wind-draft-input--geographic {
+  top: 638px;
+}
+
+.wind-draft-input--magnetic {
+  top: 712px;
+}
+
+/* высота 222 = 10 строк по 20px + паддинги 10+10 + рамка 1+1;
+   самое длинное описание из wind-rhumbs.data.ts занимает 9 строк при ширине
+   текста 332px, десятая строка — запас */
 .wind-draft-area {
+  position: absolute;
+  left: 16px;
+  top: 390px;
   width: 358px;
+  height: 222px;
   padding: 10px 12px;
   border: 1px solid rgba(208, 217, 224, 0.18); /* прозрачность от снятого с сайта #D0D9E0 */
-  border-radius: 10px;
-  background: var(--wind-control);
+  border-radius: 12px;
+  background: var(--wind-surface);
   color: var(--wind-text);
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 15px;
+  line-height: 20px;
   font-family: inherit;
   resize: none;
+  overflow: hidden;
 }
 
 .wind-draft-input:hover,
